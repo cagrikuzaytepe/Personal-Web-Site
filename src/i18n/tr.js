@@ -142,7 +142,7 @@ export const profile = {
   siteUrl: 'https://www.cagrikuzaytepe.site/',
   cvUrl: null,
   terminal: {
-    whoami: 'K. Çağrı Kuzaytepe — Bilgisayar Mühendisi',
+    whoami: 'K. Çağrı Kuzaytepe',
     currentRole: 'Bilgisayar Mühendisi',
     coreDomains: ['.NET', 'LLM/RAG', 'Bilgisayarlı Görü', 'Veri Mühendisliği'],
     status: 'Hacettepe Bilgisayar Mühendisliği (Mezun)',

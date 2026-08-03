@@ -2,7 +2,6 @@ import { FaGithub } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import Container from './ui/Container.jsx';
 import TerminalWindow from './ui/TerminalWindow.jsx';
-import ASCIIArt from './ui/ASCIIArt.jsx';
 
 const Hero = () => {
   const { t, profile } = useLanguage();
@@ -46,7 +45,6 @@ const Hero = () => {
           <h1 className="hero__name glitch" data-text={profile.name}>
             {profile.name}
           </h1>
-          <ASCIIArt />
           <p className="hero__subtitle">{t.hero.subtitle}</p>
           <p className="hero__description">{t.hero.description}</p>
 

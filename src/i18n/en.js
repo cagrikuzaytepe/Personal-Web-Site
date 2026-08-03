@@ -142,7 +142,7 @@ export const profile = {
   siteUrl: 'https://www.cagrikuzaytepe.site/',
   cvUrl: null,
   terminal: {
-    whoami: 'K. Çağrı Kuzaytepe — Computer Engineer',
+    whoami: 'K. Çağrı Kuzaytepe',
     currentRole: 'Computer Engineer',
     coreDomains: ['.NET', 'LLM/RAG', 'Computer Vision', 'Data Engineering'],
     status: 'Hacettepe Computer Engineering (Graduate)',
