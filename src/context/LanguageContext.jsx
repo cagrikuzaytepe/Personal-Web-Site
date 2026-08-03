@@ -10,9 +10,7 @@ const detectLanguage = () => {
   if (stored === 'en' || stored === 'tr') {
     return stored;
   }
-
-  const browserLang = navigator.language?.toLowerCase() ?? 'en';
-  return browserLang.startsWith('tr') ? 'tr' : 'en';
+  return 'en';
 };
 
 export const LanguageProvider = ({ children }) => {

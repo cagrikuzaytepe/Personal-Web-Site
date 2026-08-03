@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { FaGithub } from 'react-icons/fa';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import { useScrollSpy } from '../hooks/useScrollSpy.js';
 import Container from './ui/Container.jsx';
@@ -81,15 +80,6 @@ const Header = () => {
             >
               {t.language.switchTo}
             </button>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn--ghost btn--small"
-              aria-label="GitHub"
-            >
-              <FaGithub />
-            </a>
             {profile.cvUrl && (
               <a href={profile.cvUrl} className="btn btn--primary btn--small" download>
                 CV

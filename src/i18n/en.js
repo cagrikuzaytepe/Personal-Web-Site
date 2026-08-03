@@ -43,8 +43,9 @@ export const ui = {
     ],
     beyondCode: 'Beyond Code',
     beyondCodeItems: [
-      { label: 'Cinema', value: 'Letterboxd — tracking every film I watch', image: '/img/Nolan.jpg', link: 'https://letterboxd.com/cagrikuzaytepe/' },
+      { label: 'Cinema', value: 'Letterboxd — I track every film I watch', image: '/img/Nolan.jpg', link: 'https://letterboxd.com/cagrikuzaytepe/' },
       { label: 'Music', value: 'Göksel', image: '/img/göksel.jpg' },
+      { label: 'Football', value: 'Proud captain & #10 of Efsane Beytepe — honored to wear the jersey and fight for our team every day', image: '/img/EfsaneBeytepe.jpeg' },
       { label: 'Sport', value: 'Volleyball', image: '/img/Voll.jpg' },
     ],
   },
@@ -216,6 +217,7 @@ export const education = [
     description: [
       'Graduated with focus on AI systems, software engineering, and computer vision.',
       'Capstone work in distributed systems, LLM pipelines, and real-time data engineering.',
+      'Honor Student (Onur Öğrencisi).',
     ],
   },
 ];

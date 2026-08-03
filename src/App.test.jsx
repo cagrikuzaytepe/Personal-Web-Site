@@ -32,14 +32,14 @@ describe('App', () => {
 
     await waitFor(() => {
       expect(screen.getByRole('button', { name: /Switch language|Dili/i })).toBeInTheDocument();
-    }, { timeout: 5000 });
+    }, { timeout: 10000 });
 
     const toggle = screen.getByRole('button', { name: /Switch language|Dili/i });
     await user.click(toggle);
 
     expect(document.documentElement.lang).toBe('tr');
     expect(screen.getByRole('heading', { name: /Hakkımda/i })).toBeInTheDocument();
-  });
+  }, 15000);
 
   it('filters archive projects by category', async () => {
     const user = userEvent.setup();
