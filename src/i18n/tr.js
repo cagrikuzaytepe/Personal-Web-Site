@@ -46,7 +46,7 @@ export const ui = {
       { label: 'Sinema', value: 'Letterboxd \u2014 izledi\u011Fim her filmi takip ediyorum', image: '/img/Nolan.jpg', link: 'https://letterboxd.com/cagrikuzaytepe/' },
       { label: 'M\u00FCzik', value: 'G\u00f6ksel', image: '/img/g\u00f6ksel.jpg' },
       { label: 'Futbol', value: 'Kaptanlığını yaptığım Efsane Beytepe takımının 10 numarasını giymekten onur duyuyorum. Takımımız için her daim mücadele etmeye devam.', image: '/img/EfsaneBeytepe.jpeg' },
-      { label: 'Spor', value: 'Voleybol', image: '/img/Voll.jpg' },
+      { label: 'Spor', value: 'Boran ile eski g\u00FCzel voleybol g\u00fcnleri', image: '/img/Voll.jpg' },
     ],
   },
   featured: {
