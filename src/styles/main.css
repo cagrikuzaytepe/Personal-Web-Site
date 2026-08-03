@@ -1076,7 +1076,7 @@ ul {
   }
 
   .about__beyond-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .site-header__menu-toggle {
@@ -1135,6 +1135,15 @@ ul {
     font-size: 0.82rem;
     word-break: break-word;
   }
+
+  .timeline-item__content {
+    padding: 1rem;
+  }
+
+  .event-card__gallery {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-glow) transparent;
+  }
 }
 
 @media (max-width: 600px) {
@@ -1143,7 +1152,7 @@ ul {
   }
 
   .about__beyond-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .beyond-card {
@@ -1151,7 +1160,7 @@ ul {
   }
 
   .beyond-card__image {
-    height: 180px;
+    height: 150px;
   }
 
   .hero__actions {
@@ -1172,6 +1181,8 @@ ul {
     flex-wrap: nowrap;
     padding-bottom: 0.5rem;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-glow) transparent;
   }
 
   .filter-bar__button {
@@ -1196,7 +1207,7 @@ ul {
   }
 
   .loading-screen__ascii {
-    font-size: 0.35rem;
+    font-size: 0.3rem;
   }
 
   .modal-content {
@@ -1213,11 +1224,11 @@ ul {
   }
 
   .event-card__thumb {
-    flex: 0 0 130px;
+    flex: 0 0 120px;
   }
 
   .event-card__thumb img {
-    height: 100px;
+    height: 90px;
   }
 
   .git-timeline__header {
@@ -1228,6 +1239,23 @@ ul {
 
   .git-timeline__meta {
     flex-wrap: wrap;
+  }
+
+  .site-header__logo-text {
+    font-size: 0.8rem;
+  }
+
+  .timeline-item__content {
+    padding: 0.85rem;
+  }
+
+  .site-footer__socials {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
   }
 }
 
