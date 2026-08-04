@@ -217,7 +217,7 @@ export const education = [
     description: [
       'Graduated with focus on AI systems, software engineering, and computer vision.',
       'Capstone work in distributed systems, LLM pipelines, and real-time data engineering.',
-      'Honor Student (Onur Öğrencisi).',
+      'Honor Student.',
     ],
   },
 ];
