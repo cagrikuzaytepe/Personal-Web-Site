@@ -126,18 +126,17 @@ ul {
   padding: clamp(4rem, 8vw, 6rem) 0;
   opacity: 1;
   transform: none;
+  animation: tab-fade-in 0.3s ease;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .section:not(.visible) {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-  }
+@keyframes tab-fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-  .section.visible {
-    opacity: 1;
-    transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    animation: none;
   }
 }
 
@@ -275,7 +274,7 @@ ul {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 10000;
   backdrop-filter: blur(16px);
   background: rgba(7, 11, 16, 0.82);
   border-bottom: 1px solid var(--border-subtle);
@@ -1089,17 +1088,30 @@ ul {
     justify-content: center;
   }
 
+  .site-header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .site-header__nav {
     position: fixed;
-    inset: var(--header-height) 0 0;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: 1.5rem;
-    background: rgba(7, 11, 16, 0.96);
+    background: rgba(7, 11, 16, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     transform: translateY(-110%);
     opacity: 0;
     pointer-events: none;
     transition: transform var(--transition), opacity var(--transition);
+    overflow-y: auto;
+    z-index: 9999;
   }
 
   .site-header__nav.is-open {
@@ -1109,12 +1121,61 @@ ul {
   }
 
   .site-header__nav-list {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1 1 auto;
+    flex-wrap: nowrap;
+  }
+
+  .site-header__nav-item {
+    list-style: none;
+  }
+
+  .site-header__nav-link {
+    display: block;
+    font-size: 1.1rem;
+    font-family: var(--font-mono);
+    padding: 0.85rem 0.75rem;
+    border-radius: 4px;
+    color: var(--text-primary);
+    text-align: left;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .site-header__nav-link:active {
+    background: rgba(0, 255, 156, 0.1);
+  }
+
+  .site-header__nav-link .nav-prefix {
+    display: none;
   }
 
   .site-header__actions {
     margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 156, 0.15);
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .site-header__actions .lang-switch {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .site-header__actions .btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
   }
 
   .case-study__footer {
@@ -1515,26 +1576,28 @@ ul {
   box-shadow: 0 0 10px var(--accent-cyan);
 }
 
-/* File Tree Navigation */
-.site-header__nav-item {
-  list-style: none;
-}
+/* File Tree Navigation - desktop only */
+@media (min-width: 961px) {
+  .site-header__nav-item {
+    list-style: none;
+  }
 
-.site-header__nav-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+  .site-header__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 
-.nav-prefix {
-  color: var(--accent-cyan);
-  opacity: 0.6;
-  font-size: 0.75rem;
+  .nav-prefix {
+    color: var(--accent-cyan);
+    opacity: 0.6;
+    font-size: 0.75rem;
+  }
 }
 
 /* Git Timeline */

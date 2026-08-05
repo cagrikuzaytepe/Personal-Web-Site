@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
 import Container from './ui/Container.jsx';
 
-const Header = ({ activeTab, setActiveTab }) => {
+const Header = ({ activeTab, setActiveTab, isDesktop }) => {
   const { t, navSections, toggleLanguage, profile } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -24,15 +24,24 @@ const Header = ({ activeTab, setActiveTab }) => {
 
   const handleNavClick = (sectionId) => {
     setMenuOpen(false);
-    setActiveTab(sectionId);
-    window.scrollTo({ top: 0 });
+    if (isDesktop) {
+      setActiveTab(sectionId);
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   const handleLogoClick = (e) => {
     e.preventDefault();
     setMenuOpen(false);
-    setActiveTab(null);
-    window.scrollTo({ top: 0 });
+    if (isDesktop) {
+      setActiveTab(null);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -69,7 +78,7 @@ const Header = ({ activeTab, setActiveTab }) => {
               <li key={section.id} className="site-header__nav-item">
                 <button
                   type="button"
-                  className={`site-header__nav-link ${activeTab === section.id ? 'is-active' : ''}`}
+                  className={`site-header__nav-link ${activeTab === section.id && isDesktop ? 'is-active' : ''}`}
                   onClick={() => handleNavClick(section.id)}
                 >
                   <span className="nav-prefix">{index === navSections.length - 1 ? '└─' : '├─'}</span>

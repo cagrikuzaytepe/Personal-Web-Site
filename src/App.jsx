@@ -17,6 +17,7 @@ import LoadingScreen from './components/ui/LoadingScreen.jsx';
 import CodeSnippets from './components/ui/CodeSnippets.jsx';
 import HexPattern from './components/ui/HexPattern.jsx';
 import { useLanguage } from './context/LanguageContext.jsx';
+import { useMediaQuery } from './hooks/useMediaQuery.js';
 
 const sectionComponents = {
   about: About,
@@ -30,16 +31,20 @@ const sectionComponents = {
   contact: Contact,
 };
 
+const allSections = [
+  'about', 'featured', 'experience', 'education',
+  'skills', 'events', 'projects', 'beyond', 'contact',
+];
+
 function App() {
   const { t } = useLanguage();
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(null);
+  const isDesktop = useMediaQuery('(min-width: 961px)');
 
   if (loading) {
     return <LoadingScreen onComplete={() => setLoading(false)} />;
   }
-
-  const ActiveSection = activeTab ? sectionComponents[activeTab] : null;
 
   return (
     <div className="app-shell">
@@ -50,10 +55,25 @@ function App() {
       <a href="#about" className="skip-link">
         {t.skipToContent}
       </a>
-      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} isDesktop={isDesktop} />
       <main id="main-content">
-        {!activeTab && <Hero />}
-        {ActiveSection && <ActiveSection />}
+        {isDesktop ? (
+          <>
+            {!activeTab && <Hero />}
+            {activeTab && (() => {
+              const Section = sectionComponents[activeTab];
+              return Section ? <Section key={activeTab} /> : null;
+            })()}
+          </>
+        ) : (
+          <>
+            <Hero />
+            {allSections.map((id) => {
+              const Section = sectionComponents[id];
+              return <Section key={id} />;
+            })}
+          </>
+        )}
       </main>
       <Footer />
     </div>
