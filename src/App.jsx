@@ -52,7 +52,7 @@ function App() {
       </a>
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <main id="main-content">
-        <Hero />
+        {!activeTab && <Hero />}
         {ActiveSection && <ActiveSection />}
       </main>
       <Footer />

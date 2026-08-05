@@ -25,14 +25,14 @@ const Header = ({ activeTab, setActiveTab }) => {
   const handleNavClick = (sectionId) => {
     setMenuOpen(false);
     setActiveTab(sectionId);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   const handleLogoClick = (e) => {
     e.preventDefault();
     setMenuOpen(false);
     setActiveTab(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
   };
 
   return (
