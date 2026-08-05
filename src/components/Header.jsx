@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext.jsx';
-import { useScrollSpy } from '../hooks/useScrollSpy.js';
 import Container from './ui/Container.jsx';
 
-const Header = () => {
+const Header = ({ activeTab, setActiveTab }) => {
   const { t, navSections, toggleLanguage, profile } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
-  const sectionIds = navSections.map((section) => section.id);
-  const activeId = useScrollSpy(sectionIds);
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen);
@@ -25,12 +22,23 @@ const Header = () => {
     return () => window.removeEventListener('keydown', handleEscape);
   }, []);
 
-  const handleNavClick = () => setMenuOpen(false);
+  const handleNavClick = (sectionId) => {
+    setMenuOpen(false);
+    setActiveTab(sectionId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    setActiveTab(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <header className="site-header">
       <Container className="site-header__inner">
-        <a href="#hero" className="site-header__logo" onClick={handleNavClick}>
+        <a href="#hero" className="site-header__logo" onClick={handleLogoClick}>
           <img src="/img/logo.webp" alt={profile.name} width="40" height="40" />
           <span className="site-header__logo-text">
             <span className="site-header__logo-prefix">~/</span>
@@ -59,14 +67,14 @@ const Header = () => {
           <ul className="site-header__nav-list">
             {navSections.map((section, index) => (
               <li key={section.id} className="site-header__nav-item">
-                <a
-                  href={`#${section.id}`}
-                  className={`site-header__nav-link ${activeId === section.id ? 'is-active' : ''}`}
-                  onClick={handleNavClick}
+                <button
+                  type="button"
+                  className={`site-header__nav-link ${activeTab === section.id ? 'is-active' : ''}`}
+                  onClick={() => handleNavClick(section.id)}
                 >
                   <span className="nav-prefix">{index === navSections.length - 1 ? '└─' : '├─'}</span>
                   {t.nav[section.labelKey]}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

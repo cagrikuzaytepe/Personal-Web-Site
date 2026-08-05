@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
@@ -17,16 +17,29 @@ import LoadingScreen from './components/ui/LoadingScreen.jsx';
 import CodeSnippets from './components/ui/CodeSnippets.jsx';
 import HexPattern from './components/ui/HexPattern.jsx';
 import { useLanguage } from './context/LanguageContext.jsx';
-import { useIntersectionObserver } from './hooks/useIntersectionObserver.js';
+
+const sectionComponents = {
+  about: About,
+  featured: FeaturedProjects,
+  experience: Experience,
+  education: Education,
+  skills: Skills,
+  events: Events,
+  projects: ProjectArchive,
+  beyond: BeyondCode,
+  contact: Contact,
+};
 
 function App() {
   const { t } = useLanguage();
   const [loading, setLoading] = useState(true);
-  useIntersectionObserver(loading);
+  const [activeTab, setActiveTab] = useState(null);
 
   if (loading) {
     return <LoadingScreen onComplete={() => setLoading(false)} />;
   }
+
+  const ActiveSection = activeTab ? sectionComponents[activeTab] : null;
 
   return (
     <div className="app-shell">
@@ -37,18 +50,10 @@ function App() {
       <a href="#about" className="skip-link">
         {t.skipToContent}
       </a>
-      <Header />
+      <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       <main id="main-content">
         <Hero />
-        <About />
-        <FeaturedProjects />
-        <Experience />
-        <Education />
-        <Skills />
-        <Events />
-        <ProjectArchive />
-        <BeyondCode />
-        <Contact />
+        {ActiveSection && <ActiveSection />}
       </main>
       <Footer />
     </div>
