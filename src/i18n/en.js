@@ -43,7 +43,7 @@ export const ui = {
     ],
     beyondCode: 'Beyond Code',
     beyondCodeItems: [
-      { label: 'Cinema', value: 'Letterboxd — I track every film I watch', image: '/img/Nolan.jpg', link: 'https://letterboxd.com/cagrikuzaytepe/' },
+      { label: 'Cinema', value: 'Favorite director: Christopher Nolan', image: '/img/Nolan.jpg' },
       { label: 'Music', value: 'Göksel', image: '/img/göksel.jpg' },
       { label: 'Football', value: 'Proud captain & #10 of Efsane Beytepe — honored to wear the jersey and fight for our team every day', image: '/img/EfsaneBeytepe.jpeg' },
       { label: 'Sport', value: 'Good old volleyball days with Boran', image: '/img/Voll.jpg' },
