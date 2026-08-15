@@ -6,7 +6,7 @@ const BeyondCode = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="about__beyond-section section" id="beyond">
+    <section className="about__beyond-section" id="beyond">
       <Container>
         <SectionHeading eyebrow={t.about.beyondCode} title={t.about.beyondCode} />
         <div className="about__beyond-grid">

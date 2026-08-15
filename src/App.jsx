@@ -8,7 +8,6 @@ import Education from './components/Education.jsx';
 import Skills from './components/Skills.jsx';
 import Events from './components/Events.jsx';
 import ProjectArchive from './components/ProjectArchive.jsx';
-import BeyondCode from './components/BeyondCode.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import MatrixRain from './components/ui/MatrixRain.jsx';
@@ -27,13 +26,12 @@ const sectionComponents = {
   skills: Skills,
   events: Events,
   projects: ProjectArchive,
-  beyond: BeyondCode,
   contact: Contact,
 };
 
 const allSections = [
   'about', 'featured', 'experience', 'education',
-  'skills', 'events', 'projects', 'beyond', 'contact',
+  'skills', 'events', 'projects', 'contact',
 ];
 
 function App() {
@@ -59,10 +57,10 @@ function App() {
       <main id="main-content">
         {isDesktop ? (
           <>
-            {!activeTab && <Hero />}
+            {!activeTab && <Hero setActiveTab={setActiveTab} />}
             {activeTab && (() => {
               const Section = sectionComponents[activeTab];
-              return Section ? <Section key={activeTab} /> : null;
+              return Section ? <Section key={activeTab} isDesktop={isDesktop} /> : null;
             })()}
           </>
         ) : (

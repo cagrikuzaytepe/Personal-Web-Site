@@ -1,8 +1,9 @@
 import { useLanguage } from '../context/LanguageContext.jsx';
 import Container from './ui/Container.jsx';
 import SectionHeading from './ui/SectionHeading.jsx';
+import BeyondCode from './BeyondCode.jsx';
 
-const About = () => {
+const About = ({ isDesktop }) => {
   const { t } = useLanguage();
 
   return (
@@ -27,6 +28,8 @@ const About = () => {
           </div>
         </div>
       </Container>
+
+      <BeyondCode />
     </section>
   );
 };

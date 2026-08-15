@@ -8,6 +8,7 @@ export const ui = {
     skills: 'Teknoloji',
     events: 'Topluluk',
     projects: 'Arşiv',
+    beyond: 'Kod Dışı',
     contact: 'İletişim',
   },
   hero: {

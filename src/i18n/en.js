@@ -8,6 +8,7 @@ export const ui = {
     skills: 'Stack',
     events: 'Community',
     projects: 'Archive',
+    beyond: 'Beyond Code',
     contact: 'Contact',
   },
   hero: {

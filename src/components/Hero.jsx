@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext.jsx';
 import Container from './ui/Container.jsx';
 import TerminalWindow from './ui/TerminalWindow.jsx';
 
-const Hero = () => {
+const Hero = ({ setActiveTab }) => {
   const { t, profile } = useLanguage();
 
   const terminalLines = [
@@ -34,6 +34,13 @@ const Hero = () => {
     },
   ];
 
+  const handleClick = (sectionId) => (e) => {
+    if (setActiveTab) {
+      e.preventDefault();
+      setActiveTab(sectionId);
+    }
+  };
+
   return (
     <section className="hero section visible" id="hero">
       <Container className="hero__grid">
@@ -49,10 +56,10 @@ const Hero = () => {
           <p className="hero__description">{t.hero.description}</p>
 
           <div className="hero__actions">
-            <a href="#featured" className="btn btn--primary">
+            <a href="#featured" className="btn btn--primary" onClick={handleClick('featured')}>
               <span className="btn__text">{t.hero.ctaProjects}</span>
             </a>
-            <a href="#contact" className="btn btn--secondary">
+            <a href="#contact" className="btn btn--secondary" onClick={handleClick('contact')}>
               <span className="btn__text">{t.hero.ctaContact}</span>
             </a>
             <a
